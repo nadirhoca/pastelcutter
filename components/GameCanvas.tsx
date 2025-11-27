@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { GameAssets, GameState, Point, Enemy, PowerUp, PowerUpType } from '../types';
 import { audioService } from '../services/audioService';
@@ -438,6 +437,9 @@ const GameCanvas: React.FC<GameCanvasProps> = ({ assets, gameState, onGameOver, 
         const ctx = cvs.getContext('2d');
         if (!ctx) return;
         
+        // Check if grid is ready
+        if (gridRef.current.length === 0) return;
+
         const CW = cvs.width;
         const CH = cvs.height;
         const cellW = CW / GRID_WIDTH;
